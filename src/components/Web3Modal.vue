@@ -1,11 +1,7 @@
 <template>
   <div>
-    <button
-      type="button"
-      @click="modal.open()"
-      class="bt-button bt-button--primary w-100"
-      v-if="!connectionData.connected"
-    >
+    <button type="button" @click="modal.open()" class="bt-button bt-button--primary w-100"
+      v-if="!connectionData.connected">
       Connect Wallet
     </button>
   </div>
@@ -24,7 +20,12 @@ const emit = defineEmits(["walletConnected", "walletDisconnected"]);
 const connectionData = reactive({
   connected: false,
 });
-reconnect(config);
+try {
+  // console.log(connectionData)
+  // reconnect(config);
+} catch (error) {
+
+}
 createWeb3Modal({
   wagmiConfig: config,
   projectId,

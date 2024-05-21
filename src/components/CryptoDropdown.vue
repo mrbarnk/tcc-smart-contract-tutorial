@@ -17,7 +17,7 @@
         <span class="material-symbols-outlined"> expand_more </span>
       </a>
 
-      <ul class="dropdown-menu">
+      <ul class="dropdown-menu" style="overflow-y: scroll;max-height: 400px;">
         <li
           v-for="coin in cryptoList"
           :key="coin.symbol"

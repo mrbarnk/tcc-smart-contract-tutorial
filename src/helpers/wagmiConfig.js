@@ -1,15 +1,16 @@
 import { defaultWagmiConfig } from "@web3modal/wagmi/vue";
-import { arbitrum, mainnet } from "@wagmi/core/chains";
-export const chains = [mainnet, arbitrum];
-export const projectId = "d4076d74c85fcd767042e941cf1e2e84";
+import { arbitrum, bsc, mainnet, sepolia } from "@wagmi/core/chains";
+export const chains = [bsc];
+export const projectId = process.env.VUE_APP_PROJECT_ID;
 export const config = defaultWagmiConfig({
   chains,
   projectId,
   metadata: {
-    name: "Web3Modal Vue Example",
-    description: "Web3Modal Vue Example",
+    name: "TCC Website",
+    description: "TCC Website",
     url: "",
     icons: [],
     verifyUrl: "",
   },
 });
+
