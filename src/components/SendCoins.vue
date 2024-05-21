@@ -33,7 +33,7 @@ import { ref, reactive } from "vue";
 import Web3Modal from "./Web3Modal.vue";
 import { sendTransaction, waitForTransactionReceipt, readContract } from '@wagmi/core'
 import { config } from "@/helpers/wagmiConfig";
-import { useToast } from "vue-toastification";
+import { toast } from 'vue3-toastify';
 
 export default {
   name: "SendCoins",
@@ -41,7 +41,6 @@ export default {
     Web3Modal,
   },
   setup() {
-    const toast = useToast()
     const transferFrom = ref(null);
     const walletAddress = ref("");
     const setTransferFrom = (coin) => {
@@ -71,11 +70,11 @@ export default {
         const wait = waitForTransactionReceipt(config, { hash: result })
 
         toast.info('Waiting for transaction to complete!')
-        alert('Waiting for transaction to complete!')
+        // alert('Waiting for transaction to complete!')
         console.log({ result })
-        await wait()
-        toast.success('Transction sent successfully!')
-        alert('Transction sent successfully!')
+        await wait
+        toast.success(`Transction sent successfully!: ${result}`)
+        // alert('Transction sent successfully!')
         console.log({ result })
       } catch (error) {
         toast.error(error.message)
